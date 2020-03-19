@@ -20,9 +20,8 @@ type MemoryModule struct {
 }
 
 type MemoryInfo struct {
-	Banks              []*MemoryBank `json:"banks"`
-	TotalPhysicalBytes int64         `json:"total_physical_bytes"`
-	TotalUsableBytes   int64         `json:"total_usable_bytes"`
+	TotalPhysicalBytes int64 `json:"total_physical_bytes"`
+	TotalUsableBytes   int64 `json:"total_usable_bytes"`
 	// An array of sizes, in bytes, of memory pages supported by the host
 	SupportedPageSizes []uint64        `json:"supported_page_sizes"`
 	Modules            []*MemoryModule `json:"modules"`
