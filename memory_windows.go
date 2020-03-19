@@ -10,7 +10,7 @@ import (
 	"github.com/StackExchange/wmi"
 )
 
-const wmqlOperatingSystem = "SELECT FreePhysicalMemory, FreeSpaceInPagingFiles, FreeVirtualMemory, TotalSwapSpaceSize, TotalVirtualMemorySize, TotalVisibleMemorySize FROM Win32_OperatingSystem"
+const wqlOperatingSystem = "SELECT FreePhysicalMemory, FreeSpaceInPagingFiles, FreeVirtualMemory, TotalSwapSpaceSize, TotalVirtualMemorySize, TotalVisibleMemorySize FROM Win32_OperatingSystem"
 
 type win32OperatingSystem struct {
 	FreePhysicalMemory     uint64
@@ -21,7 +21,7 @@ type win32OperatingSystem struct {
 	TotalVisibleMemorySize uint64
 }
 
-const wmqlPhysicalMemor = "SELECT BankLabel, Capacity, DataWidth, Description, DeviceLocator, Manufacturer, Model, Name, PartNumber, PositionInRow, SerialNumber, Speed, Tag, TotalWidth FROM Win32_PhysicalMemory"
+const wqlPhysicalMemory = "SELECT BankLabel, Capacity, DataWidth, Description, DeviceLocator, Manufacturer, Model, Name, PartNumber, PositionInRow, SerialNumber, Speed, Tag, TotalWidth FROM Win32_PhysicalMemory"
 
 type win32PhysicalMemory struct {
 	BankLabel     string
@@ -43,26 +43,24 @@ type win32PhysicalMemory struct {
 func (ctx *context) memFillInfo(info *MemoryInfo) error {
 	// Getting info from WMI
 	var win32OSDescriptions []win32OperatingSystem
-	if err := wmi.Query(wmqlOperatingSystem, &win32OSDescriptions); err != nil {
+	if err := wmi.Query(wqlOperatingSystem, &win32OSDescriptions); err != nil {
 		return err
 	}
 	var win32MemDescriptions []win32PhysicalMemory
-	if err := wmi.Query(wmqlPhysicalMemor, &win32MemDescriptions); err != nil {
+	if err := wmi.Query(wqlPhysicalMemory, &win32MemDescriptions); err != nil {
 		return err
 	}
 	// Converting into standard structures
-	// Handling physical memory banks
-	info.Banks = make([]*MemoryBank, 0, len(win32MemDescriptions))
+	// Handling physical memory modules
+	info.Modules = make([]*MemoryModule, 0, len(win32MemDescriptions))
 	for _, description := range win32MemDescriptions {
-		info.Banks = append(info.Banks, &MemoryBank{
-			Name:         description.Description,
+		info.Modules = append(info.Modules, &MemoryModule{
 			Label:        description.BankLabel,
 			Location:     description.DeviceLocator,
 			SerialNumber: description.SerialNumber,
 			SizeBytes:    int64(description.Capacity),
 			Vendor:       description.Manufacturer,
 		})
-		//totalPhysicalBytes += description.Capacity
 	}
 	// Handling physical memory total/free size (as seen by OS)
 	var totalUsableBytes uint64

@@ -11,8 +11,7 @@ import (
 	"math"
 )
 
-type MemoryBank struct {
-	Name         string `json:"name"`
+type MemoryModule struct {
 	Label        string `json:"label"`
 	Location     string `json:"location"`
 	SerialNumber string `json:"serial_number"`
@@ -25,7 +24,8 @@ type MemoryInfo struct {
 	TotalPhysicalBytes int64         `json:"total_physical_bytes"`
 	TotalUsableBytes   int64         `json:"total_usable_bytes"`
 	// An array of sizes, in bytes, of memory pages supported by the host
-	SupportedPageSizes []uint64 `json:"supported_page_sizes"`
+	SupportedPageSizes []uint64        `json:"supported_page_sizes"`
+	Modules            []*MemoryModule `json:"modules"`
 }
 
 func Memory(opts ...*WithOption) (*MemoryInfo, error) {
