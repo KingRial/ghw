@@ -124,13 +124,13 @@ func (ctx *context) blockFillInfo(info *BlockInfo) error {
 						if logicaldisktodiskpartition.Antecedent == desiredAntecedent && logicaldisktodiskpartition.Dependent == desiredDependent {
 							// Appending Partition
 							p := &Partition{
-								Name:        strings.TrimSpace(logicaldisk.Caption),
-								Label:       strings.TrimSpace(logicaldisk.Caption),
-								SizeBytes:   logicaldisk.Size,
-								UsableBytes: logicaldisk.FreeSpace,
-								MountPoint:  logicaldisk.DeviceID,
-								Type:        diskpartition.Type,
-								IsReadOnly:  toReadOnly(diskpartition.Access),
+								Name:           strings.TrimSpace(logicaldisk.Caption),
+								Label:          strings.TrimSpace(logicaldisk.Caption),
+								SizeBytes:      logicaldisk.Size,
+								AvailableBytes: logicaldisk.FreeSpace,
+								MountPoint:     logicaldisk.DeviceID,
+								Type:           diskpartition.Type,
+								IsReadOnly:     toReadOnly(diskpartition.Access),
 							}
 							disk.Partitions = append(disk.Partitions, p)
 							break
