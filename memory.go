@@ -55,7 +55,14 @@ func (i *MemoryInfo) String() string {
 		tub = int64(math.Ceil(float64(i.TotalUsableBytes) / float64(unit)))
 		tubs = fmt.Sprintf("%d%s", tub, unitStr)
 	}
-	return fmt.Sprintf("memory (%s physical, %s usable)", tpbs, tubs)
+	tabs := UNKNOWN
+	if i.TotalAvailableBytes > 0 {
+		tab := i.TotalAvailableBytes
+		unit, unitStr := unitWithString(tab)
+		tab = int64(math.Ceil(float64(i.TotalAvailableBytes) / float64(unit)))
+		tabs = fmt.Sprintf("%d%s", tab, unitStr)
+	}
+	return fmt.Sprintf("memory (%s physical, %s usable, %s available)", tpbs, tubs, tabs)
 }
 
 // simple private struct used to encapsulate memory information in a top-level

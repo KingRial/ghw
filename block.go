@@ -222,10 +222,18 @@ func (p *Partition) String() string {
 		size = uint64(math.Ceil(float64(size) / float64(unit)))
 		sizeStr = fmt.Sprintf("%d%s", size, unitStr)
 	}
+	availableStr := UNKNOWN
+	if p.AvailableBytes > 0 {
+		size := p.AvailableBytes
+		unit, unitStr := unitWithString(int64(size))
+		size = uint64(math.Ceil(float64(size) / float64(unit)))
+		availableStr = fmt.Sprintf("%d%s", size, unitStr)
+	}
 	return fmt.Sprintf(
-		"%s (%s) %s%s",
+		"%s (%s, available: %s) %s%s",
 		p.Name,
 		sizeStr,
+		availableStr,
 		typeStr,
 		mountStr,
 	)

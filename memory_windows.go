@@ -62,7 +62,7 @@ func (ctx *context) memFillInfo(info *MemoryInfo) error {
 	var totalAvailableBytes uint64
 	var totalUsableBytes uint64
 	for _, description := range win32OSDescriptions {
-		totalAvailableBytes += description.FreePhysicalMemory
+		totalAvailableBytes += description.FreePhysicalMemory * uint64(KB)
 		// TotalVisibleMemorySize is the amount of memory available for us by
 		// the operating system **in Kilobytes**
 		totalUsableBytes += description.TotalVisibleMemorySize * uint64(KB)
