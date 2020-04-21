@@ -32,6 +32,7 @@ type HostInfo struct {
 	Baseboard *BaseboardInfo `json:"baseboard"`
 	Product   *ProductInfo   `json:"product"`
 	Packages  *PackagesInfo  `json:"packages"`
+	OS        *OSInfo        `json:"os"`
 }
 
 // Host returns a pointer to a HostInfo struct that contains fields with
@@ -85,6 +86,10 @@ func Host(opts ...*WithOption) (*HostInfo, error) {
 	if err := ctx.packagesFillInfo(packages); err != nil {
 		return nil, err
 	}
+	os := &OSInfo{}
+	if err := ctx.osFillInfo(os); err != nil {
+		return nil, err
+	}
 	return &HostInfo{
 		CPU:       cpu,
 		Memory:    mem,
@@ -97,6 +102,7 @@ func Host(opts ...*WithOption) (*HostInfo, error) {
 		Baseboard: baseboard,
 		Product:   product,
 		Packages:  packages,
+		OS:        os,
 	}, nil
 }
 
@@ -104,7 +110,7 @@ func Host(opts ...*WithOption) (*HostInfo, error) {
 // structs' String-ified output
 func (info *HostInfo) String() string {
 	return fmt.Sprintf(
-		"%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
+		"%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
 		info.Block.String(),
 		info.CPU.String(),
 		info.GPU.String(),
@@ -116,6 +122,7 @@ func (info *HostInfo) String() string {
 		info.Baseboard.String(),
 		info.Product.String(),
 		info.Packages.String(),
+		info.OS.String(),
 	)
 }
 
