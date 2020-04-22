@@ -20,7 +20,7 @@ type OSInfo struct {
 
 func (o *OSInfo) String() string {
 	return fmt.Sprintf(
-		"%s %s (Serial: %s, Product Key: %s)",
+		"%s %s (Serial: %q, Product Key: %q)",
 		o.Name,
 		o.Version,
 		o.Serial,
