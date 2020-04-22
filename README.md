@@ -6,16 +6,16 @@ for Linux and Windows. There currently exists partial support for MacOSX.
 
 ## Differences from original project
 
-The current fork is different by the original one by adding the ability to collect informations not limited to HW:
+The current project is different by the original one by adding the ability to collect informations not limited to HW only (but still somehow inherent to an inspection library):
 
 - OS informations
-- Installed software
+- Installed softwares
 - Available/Consumption Memory
 - Available/Consumption Disk Partition
 
 Currently the additions are focused only for windows environments.
 
-Feel free to collaborate on the current project or on the [original](https://github.com/jaypipes/ghw) project!
+Feel free to collaborate on the current project or on the [original](https://github.com/jaypipes/ghw) one!
 
 ## Design Principles
 
