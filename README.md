@@ -4,6 +4,19 @@
 `ghw` is a small Golang library providing hardware inspection and discovery
 for Linux and Windows. There currently exists partial support for MacOSX.
 
+## Differences from original project
+
+The current fork is different by the original one by adding the ability to collect informations not limited to HW:
+
+- OS informations
+- Installed software
+- Available/Consumption Memory
+- Available/Consumption Disk Partition
+
+Currently the additions are focused only for windows environments and are able to collect:
+
+Feel free to collaborate on the current project or on the [original](https://github.com/jaypipes/ghw) project!
+
 ## Design Principles
 
 * No root privileges needed for discovery
