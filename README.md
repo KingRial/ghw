@@ -13,7 +13,7 @@ The current fork is different by the original one by adding the ability to colle
 - Available/Consumption Memory
 - Available/Consumption Disk Partition
 
-Currently the additions are focused only for windows environments and are able to collect:
+Currently the additions are focused only for windows environments.
 
 Feel free to collaborate on the current project or on the [original](https://github.com/jaypipes/ghw) project!
 
