@@ -10,6 +10,7 @@ The current project is different by the original one by adding the ability to co
 
 - OS informations
 - Installed softwares
+- CPU usage
 - Available/Consumption Memory
 - Available/Consumption Disk Partition
 

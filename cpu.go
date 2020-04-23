@@ -62,6 +62,8 @@ type Processor struct {
 	// Cores is a slice of ProcessorCore` struct pointers that are packed onto
 	// this physical processor
 	Cores []*ProcessorCore `json:"cores"`
+	// Load capacity in percentage of each processor, averaged to the last second
+	Load uint16 `json:"load"`
 }
 
 // HasCapability returns true if the Processor has the supplied cpuid

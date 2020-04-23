@@ -10,13 +10,14 @@ import (
 	"github.com/StackExchange/wmi"
 )
 
-const wmqlProcessor = "SELECT Manufacturer, Name, NumberOfLogicalProcessors, NumberOfCores FROM Win32_Processor"
+const wmqlProcessor = "SELECT Manufacturer, Name, NumberOfLogicalProcessors, NumberOfCores, LoadPercentage FROM Win32_Processor"
 
 type win32Processor struct {
 	Manufacturer              string
 	Name                      string
 	NumberOfLogicalProcessors uint32
 	NumberOfCores             uint32
+	LoadPercentage            uint16
 }
 
 func (ctx *context) cpuFillInfo(info *CPUInfo) error {
@@ -48,6 +49,7 @@ func (ctx *context) processorsGet(win32descriptions []win32Processor) []*Process
 			Vendor:     description.Manufacturer,
 			NumCores:   description.NumberOfCores,
 			NumThreads: description.NumberOfLogicalProcessors,
+			Load:       description.LoadPercentage,
 		}
 		procs = append(procs, p)
 	}
