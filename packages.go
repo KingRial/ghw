@@ -20,6 +20,7 @@ type PackagesInfo struct {
 type PackageInfo struct {
 	Label       string `json:"label"`
 	Version     string `json:"version"`
+	Vendor      string `json:"vendor"`
 	InstallDate string `json:"install_date"`
 }
 
@@ -28,7 +29,7 @@ func (info *PackagesInfo) String() string {
 	result.WriteString("Installed Packages:")
 	if info != nil && info.Installed != nil {
 		for _, packageInfo := range info.Installed {
-			result.WriteString(fmt.Sprintf("\t[%s]: version %s installed on: %s\n", packageInfo.Label, packageInfo.Version, packageInfo.InstallDate))
+			result.WriteString(fmt.Sprintf("\t[%s]: vendor %q, version %q, installed on %q\n", packageInfo.Label, packageInfo.Vendor, packageInfo.Version, packageInfo.InstallDate))
 		}
 		return result.String()
 	}

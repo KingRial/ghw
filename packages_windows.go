@@ -29,6 +29,7 @@ func (ctx *context) packagesFillInfo(info *PackagesInfo) error {
 		label, _, _ := subKey.GetStringValue("DisplayName")
 		version, _, _ := subKey.GetStringValue("DisplayVersion")
 		installDate, _, _ := subKey.GetStringValue("InstallDate")
+		vendor, _, _ := subKey.GetStringValue("Publisher")
 		// Parsing installDate if set
 		if installDate != "" {
 			parsedTime, _ := time.Parse("20060102", installDate)
@@ -39,6 +40,7 @@ func (ctx *context) packagesFillInfo(info *PackagesInfo) error {
 			info.Installed = append(info.Installed, &PackageInfo{
 				Label:       label,
 				Version:     version,
+				Vendor:      vendor,
 				InstallDate: installDate,
 			})
 		}
