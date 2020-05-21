@@ -2,6 +2,10 @@
 # for detailed Gopkg.toml documentation.
 
 [[constraint]]
+  name = "github.com/StackExchange/wmi"
+  version = "1.1.0"
+
+[[constraint]]
   name = "github.com/jaypipes/pcidb"
   version = "0.4"
 

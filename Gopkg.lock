@@ -2,6 +2,14 @@
 
 
 [[projects]]
+  digest = "1:6146fda730c18186631e91e818d995e759e7cbe27644d6871ccd469f6865c686"
+  name = "github.com/StackExchange/wmi"
+  packages = ["."]
+  pruneopts = ""
+  revision = "cbe66965904dbe8a6cd589e2298e5d8b986bd7dd"
+  version = "1.1.0"
+
+[[projects]]
   digest = "1:b13707423743d41665fd23f0c36b2f37bb49c30e94adb813319c44188a51ba22"
   name = "github.com/ghodss/yaml"
   packages = ["."]
@@ -10,12 +18,34 @@
   version = "v1.0.0"
 
 [[projects]]
+  digest = "1:b6581f9180e0f2d5549280d71819ab951db9d511478c87daca95669589d505c0"
+  name = "github.com/go-ole/go-ole"
+  packages = [
+    ".",
+    "oleutil",
+  ]
+  pruneopts = ""
+  revision = "97b6244175ae18ea6eef668034fd6565847501c9"
+  version = "v1.2.4"
+
+[[projects]]
   digest = "1:870d441fe217b8e689d7949fef6e43efbc787e50f200cb1e70dbca9204a1d6be"
   name = "github.com/inconshreveable/mousetrap"
   packages = ["."]
   pruneopts = ""
   revision = "76626ae9c91c4f2a10f34cad8ce83ea42c93bb75"
   version = "v1.0"
+
+[[projects]]
+  digest = "1:4a1cb2c0904a29329a083bce7e2ea579ddc13d72bebddcd4727d4fd4a762bc2f"
+  name = "github.com/jaypipes/ghw"
+  packages = [
+    ".",
+    "cmd/ghwc/commands",
+  ]
+  pruneopts = ""
+  revision = "14923eaaa4d8378051f741694e261747d16fc05e"
+  version = "v0.6.0"
 
 [[projects]]
   digest = "1:49ab40aecc2c09b5eb0a277716f17958c502dc634d31eff3c345821320b1af31"
@@ -58,6 +88,18 @@
   version = "v1.0.2"
 
 [[projects]]
+  branch = "master"
+  digest = "1:0ea6cd4af7ca62aa1977d63a2e783f8161c794f757483468138141f2ce74731e"
+  name = "golang.org/x/sys"
+  packages = [
+    "internal/unsafeheader",
+    "windows",
+    "windows/registry",
+  ]
+  pruneopts = ""
+  revision = "fe76b779f299728f3bd63f77ea2c815504229c3b"
+
+[[projects]]
   digest = "1:cedccf16b71e86db87a24f8d4c70b0a855872eb967cb906a66b95de56aefbd0d"
   name = "gopkg.in/yaml.v2"
   packages = ["."]
@@ -77,10 +119,14 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/StackExchange/wmi",
     "github.com/ghodss/yaml",
+    "github.com/jaypipes/ghw",
+    "github.com/jaypipes/ghw/cmd/ghwc/commands",
     "github.com/jaypipes/pcidb",
     "github.com/pkg/errors",
     "github.com/spf13/cobra",
+    "golang.org/x/sys/windows/registry",
     "howett.net/plist",
   ]
   solver-name = "gps-cdcl"
