@@ -1,4 +1,4 @@
-module github.com/jaypipes/ghw
+module github.com/KingRial/ghw
 
 go 1.12
 
