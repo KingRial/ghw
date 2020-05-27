@@ -6,13 +6,21 @@ for Linux and Windows. There currently exists partial support for MacOSX.
 
 ## Differences from original project
 
-The current project is different by the original one by adding the ability to collect informations not limited to HW only (but still somehow inherent to an inspection library):
+The current project is different by the original one by adding the ability to enrich HW inspection with usefull but unrelated informations from its main focus:
 
 - OS informations
 - Installed softwares
 - CPU usage
 - Available/Consumption Memory
 - Available/Consumption Disk Partition
+
+However, as pointed from the creator of the forked project there is a **BIG** difference between inspection and monitoring:
+> It is important to point out that `ghw` does **NOT** report information that is
+> temporary or variable. It is **NOT** a system monitor nor is it an appropriate
+> tool for gathering data points for metrics that change over time.  If you are
+> looking for a system that tracks usage of CPU, memory, network I/O or disk I/O,
+> there are plenty of great open source tools that do this! Check out the
+> [Prometheus project](https://prometheus.io/) for a great example.
 
 Currently the additions are focused only for windows environments.
 
